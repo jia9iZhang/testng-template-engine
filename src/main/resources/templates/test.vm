@@ -1,0 +1,87 @@
+package testcase.e2e.${packageName};
+
+import com.atta.test.common.TestConstants;
+import com.atta.test.dal.dao.${daoName};
+import com.atta.test.framework.util.ssh.ShellUtils;
+import com.atta.test.job.scheduler.SettleJobs;
+import com.atta.test.model.${packageName}.${classNameLower}.Delete${className}Model;
+import com.atta.test.model.${packageName}.${classNameLower}.Insert${className}Model;
+import com.atta.test.model.${packageName}.${classNameLower}.List${className}Model;
+import com.atta.test.model.${packageName}.${classNameLower}.Update${className}Model;
+import com.atta.test.module.boss.${packageName}.${className}Api;
+import com.atta.test.util.AccountingUtils;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import lombok.extern.slf4j.Slf4j;
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import java.util.Map;
+
+import static com.atta.test.framework.ui.BaseUiTest.initBrowser;
+
+/**
+* {@code @Description} ${className}管理
+* {@code @Author} ${authorName}
+* {@code @Date} ${date}
+*/
+@Slf4j
+public class ${className}ApiTest {
+    @BeforeClass(alwaysRun = true)
+    public void setUp() {
+        initBrowser();
+    }
+
+    /**
+    * 新增
+    */
+    @Test
+    public void insert${className}() {
+        Insert${className}Model insert${className}Model = new Insert${className}Model();
+        new ${className}Api().insert${className}ApiBody(insert${className}Model);
+
+        Assert.assertEquals("", "", "新增${className}失败");
+    }
+
+    /**
+    * 查询
+    */
+    @DataProvider(name = "lastJsonObject")
+    public Object[] list${className}() {
+        List${className}Model list${className}Model = new List${className}Model();
+        list${className}Model.setPage(1);
+        list${className}Model.setSize(100);
+        String resp = new ${className}Api().list${className}ApiBody(list${className}Model);
+        JsonObject jsonObject = new Gson().fromJson(resp, JsonObject.class);
+
+        Assert.assertEquals(jsonObject.get("total").getAsString(),"","查询${className}失败");
+
+        JsonArray list = jsonObject.get("list").getAsJsonArray();
+        JsonObject lastJsonObject = list.get(list.size() - 1).getAsJsonObject();
+        return new Object[]{lastJsonObject};
+    }
+
+    /**
+    * 更新
+    */
+    @Test(dataProvider = "lastJsonObject",dependsOnMethods = "insert${className}")
+    public void update${className}(JsonObject lastJsonObject) {
+        String idAndVersion = ${daoName}.getByID();
+        Update${className}Model update${className}Model = new Update${className}Model();
+        new ${className}Api().update${className}ApiBody(update${className}Model);
+
+        Assert.assertEquals("", "", "更新${className}失败");
+    }
+
+    /**
+    * 删除
+    */
+    @Test(dataProvider = "lastJsonObject",dependsOnMethods = "update${className}")
+    public void delete${className}(JsonObject lastJsonObject) {
+        Delete${className}Model delete${className}Model = new Delete${className}Model();
+        new ${className}Api().delete${className}ApiBody(delete${className}Model);
+
+        Assert.assertEquals("", "", "删除${className}失败");
+    }
+}

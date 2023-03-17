@@ -1,0 +1,69 @@
+package com.atta.test.module.boss.${packageName};
+
+import com.atta.test.model.api.ApiAssertModel;
+import com.atta.test.model.${packageName}.${classNameLower}.Delete${className}Model;
+import com.atta.test.model.${packageName}.${classNameLower}.Insert${className}Model;
+import com.atta.test.model.${packageName}.${classNameLower}.List${className}Model;
+import com.atta.test.model.${packageName}.${classNameLower}.Update${className}Model;
+import com.atta.test.module.boss.BossUser;
+import com.atta.test.testapi.model.ApiCaseModel;
+import com.atta.test.testapi.module.api.BossApiBase;
+
+/**
+* @Description ${className}接口
+* @Author ${authorName}
+* @Date ${date}
+*/
+public class ${className}Api extends BossApiBase {
+    private static final String BOSS_USER = BossUser.Admin.getPhone();
+
+    public ApiAssertModel apiAssert() {
+        ApiAssertModel apiAssertModel = new ApiAssertModel();
+        apiAssertModel.setStatusCode("200");
+        return apiAssertModel;
+    }
+
+    private void insert${className}Api(ApiCaseModel apiCaseModel) {
+        String url = ${host} + "";
+        post(url, apiCaseModel);
+    }
+
+    private String list${className}Api(ApiCaseModel apiCaseModel) {
+        String url = ${host} + "";
+        return post(url, apiCaseModel);
+    }
+
+    private void update${className}Api(ApiCaseModel apiCaseModel) {
+        String url = ${host} + "";
+        post(url, apiCaseModel);
+    }
+
+    private void delete${className}Api(ApiCaseModel apiCaseModel) {
+        String url = ${host} + "";
+        post(url, apiCaseModel);
+    }
+
+    public void insert${className}ApiBody(Insert${className}Model insert${className}Model) {
+        ApiCaseModel apiCaseModel = new ApiCaseModel(BOSS_USER, insert${className}Model);
+        apiCaseModel.setAsserts(apiAssert());
+        insert${className}Api(apiCaseModel);
+    }
+
+    public String list${className}ApiBody(List${className}Model list${className}Model) {
+        ApiCaseModel apiCaseModel = new ApiCaseModel(BOSS_USER, list${className}Model);
+        apiCaseModel.setAsserts(apiAssert());
+        return list${className}Api(apiCaseModel);
+    }
+
+    public void update${className}ApiBody(Update${className}Model update${className}Model) {
+        ApiCaseModel apiCaseModel = new ApiCaseModel(BOSS_USER, update${className}Model);
+        apiCaseModel.setAsserts(apiAssert());
+        update${className}Api(apiCaseModel);
+    }
+
+    public void delete${className}ApiBody(Delete${className}Model delete${className}Model) {
+        ApiCaseModel apiCaseModel = new ApiCaseModel(BOSS_USER, delete${className}Model);
+        apiCaseModel.setAsserts(apiAssert());
+        delete${className}Api(apiCaseModel);
+    }
+}

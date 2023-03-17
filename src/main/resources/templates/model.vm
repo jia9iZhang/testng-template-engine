@@ -1,0 +1,17 @@
+package com.atta.test.model.${packageName}.${classNameLower};
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+/**
+* @Description TODO
+* @Author ${authorName}
+* @Date ${date}
+*/
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ${operation}${className}Model {
+
+}
