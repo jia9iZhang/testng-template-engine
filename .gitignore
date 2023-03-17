@@ -9,7 +9,7 @@
 # Zeppelin ignored files
 /ZeppelinRemoteNotebooks/
 
-
+#排除输出文件夹
 /output
 
 /target
