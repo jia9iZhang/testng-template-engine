@@ -1,4 +1,4 @@
-package org.xt.config;
+package org.jiaqi.config;
 
 import lombok.SneakyThrows;
 

@@ -1,4 +1,4 @@
-package org.xt;
+package org.jiaqi;
 
 import lombok.SneakyThrows;
 import org.apache.commons.lang.CharEncoding;
@@ -7,7 +7,7 @@ import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
-import org.xt.config.CodeTempleConfiguration;
+import org.jiaqi.config.CodeTempleConfiguration;
 
 import java.io.File;
 import java.io.PrintWriter;
