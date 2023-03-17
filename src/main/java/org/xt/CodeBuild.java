@@ -7,7 +7,7 @@ import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
-import org.xt.config.TempleConfiguration;
+import org.xt.config.CodeTempleConfiguration;
 
 import java.io.File;
 import java.io.PrintWriter;
@@ -15,15 +15,15 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 /**
- * @Description TODO
+ * @Description 测试用例代码构建器
  * @Author jiaqi.zhang
  * @Date 2023/2/20-17:50
  */
-public class Build {
+public class CodeBuild {
     public static Properties properties;
 
     static {
-        properties = new TempleConfiguration().getProperties();
+        properties = new CodeTempleConfiguration().getProperties();
     }
 
     public static final String OPERATION = "operation";
