@@ -11,5 +11,5 @@
 
 #排除输出文件夹
 /output
-
 /target
+/src/test
