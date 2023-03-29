@@ -7,4 +7,6 @@
 # 使用说明
 - 使用前先在根目录下创建 output 文件夹，用于生成的代码存放
 - 代码模版文件放置于 resources 文件夹 （一般不需要更改）
-- 使用前请先对 src/main/resources/config.properties 文件进行定制配置。
+- 使用前请先：
+  - 对 src/main/resources/config.properties 文件进行定制配置。
+  - 在 枚举BossUser中新增对应领域测试账号，以供接口 Api进行使用。

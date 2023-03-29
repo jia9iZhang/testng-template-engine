@@ -44,6 +44,8 @@ public class CodeBuild {
     String modulePath = properties.getProperty("modulePath");
     String daoPath = properties.getProperty("daoPath");
 
+    String bossUser = properties.getProperty("bossUser");
+
     /**
      * VelocityEngine初始化
      *
@@ -73,6 +75,7 @@ public class CodeBuild {
         context.put("authorName", authorName);
         context.put("daoName", daoName);
         context.put("host", host);
+        context.put("bossUser", bossUser);
         return context;
     }
 

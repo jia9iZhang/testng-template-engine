@@ -15,7 +15,9 @@ import com.atta.test.testapi.module.api.BossApiBase;
 * @Date ${date}
 */
 public class ${className}Api extends BossApiBase {
-    private static final String BOSS_USER = BossUser.Admin.getPhone();
+
+    //对于领域自动化账号,需自行创建
+    private static final String BOSS_USER = BossUser.${bossUser}.getPhone();
 
 
     private void insert${className}Api(ApiCaseModel apiCaseModel) {
@@ -40,24 +42,28 @@ public class ${className}Api extends BossApiBase {
 
     public void insert${className}ApiBody(Insert${className}Model insert${className}Model) {
         ApiCaseModel apiCaseModel = new ApiCaseModel(BOSS_USER, insert${className}Model);
+        //配置接口响应 200断言
         apiCaseModel.setAsserts(ApiCommon.apiAssert());
         insert${className}Api(apiCaseModel);
     }
 
     public String list${className}ApiBody(List${className}Model list${className}Model) {
         ApiCaseModel apiCaseModel = new ApiCaseModel(BOSS_USER, list${className}Model);
+        //配置接口响应 200断言
         apiCaseModel.setAsserts(ApiCommon.apiAssert());
         return list${className}Api(apiCaseModel);
     }
 
     public void update${className}ApiBody(Update${className}Model update${className}Model) {
         ApiCaseModel apiCaseModel = new ApiCaseModel(BOSS_USER, update${className}Model);
+        //配置接口响应 200断言
         apiCaseModel.setAsserts(ApiCommon.apiAssert());
         update${className}Api(apiCaseModel);
     }
 
     public void delete${className}ApiBody(Delete${className}Model delete${className}Model) {
         ApiCaseModel apiCaseModel = new ApiCaseModel(BOSS_USER, delete${className}Model);
+        //配置接口响应 200断言
         apiCaseModel.setAsserts(ApiCommon.apiAssert());
         delete${className}Api(apiCaseModel);
     }
