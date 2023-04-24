@@ -13,11 +13,15 @@ import java.util.Properties;
 public class CodeTempleConfiguration {
     @SneakyThrows
     public Properties getProperties() {
-        // 使用ClassLoader加载properties配置文件生成对应的输入流
-        InputStream in = CodeTempleConfiguration.class.getClassLoader().getResourceAsStream("config.properties");
         Properties properties = new Properties();
-        // 使用properties对象加载输入流
-        properties.load(in);
+        try (InputStream in = CodeTempleConfiguration.class.getClassLoader().getResourceAsStream("config.properties")) {
+            if (in != null) {
+                properties.load(in);
+            } else {
+                throw new FileNotFoundException("config.properties not found");
+            }
+        }
         return properties;
     }
 }
+
